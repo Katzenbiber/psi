@@ -1,13 +1,18 @@
+#include "settings.h"
 #include "simulation.h"
+#include <iostream>
+#include <string>
 #include <thread>
 
-int main() {
-    // TODO: implement command line argument parsing
-    //       - input file
+int main(int argc, char **argv) {
+    // BUG: forget to check if input file is provided
+    std::basic_string<char> settings_path = std::basic_string<char>(argv[1]);
+    std::cout << "Settings path: " << settings_path << std::endl;
 
     //  TODO: parse input file
     //        - simulation parameters
     //        - initial conditions
+    // Settings settings = Settings::parse_from_file(settings_path);
 
     // initialize simulation
     // TODO: pass simulation parameters and initial conditions
