@@ -12,7 +12,7 @@ void exit_handler(int s) {
     // make cursor visible again
     std::cout << "\033[?25h" << std::endl;
     std::cout << "Exiting..." << std::endl;
-    exit(1);
+    exit(0);
 }
 
 int main(int argc, char **argv) {
