@@ -21,6 +21,15 @@ Simulation::Simulation() {
     }
 }
 
+Simulation::Simulation(Settings settings) {
+    // initialize simulation
+    time = 0.0;
+    dx = settings.dx;
+    c = settings.c;
+    u = settings.u;
+    u_prev = settings.u_prev;
+}
+
 void Simulation::visualize() {
     // make cursor invisible
     // if you are interested in details:

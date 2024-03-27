@@ -1,3 +1,5 @@
+#pragma once
+#include "settings.h"
 #include <vector>
 
 class Simulation {
@@ -10,6 +12,7 @@ class Simulation {
 
   public:
     Simulation();
+    Simulation(Settings settings);
     void visualize();
     void step(float dt);
 };

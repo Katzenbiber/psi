@@ -1,8 +1,9 @@
 #include "settings.h"
 #include "simulation.h"
+#include <cmath>
+#include <csignal>
 #include <iostream>
 #include <string>
-#include <csignal>
 #include <thread>
 
 void exit_handler(int s) {
@@ -23,19 +24,36 @@ int main(int argc, char **argv) {
     sigaction(SIGINT, &sigIntHandler, NULL);
 
     // BUG: forget to check if input file is provided
-    std::basic_string<char> settings_path = std::basic_string<char>(argv[1]);
-    std::cout << "Settings path: " << settings_path << std::endl;
-
-    //  TODO: parse input file
-    //        - simulation parameters
-    //        - initial conditions
-    // Settings settings = Settings::parse_from_file(settings_path);
+    Settings settings;
+    if (argc >= 2) {
+        std::basic_string<char> settings_path =
+            std::basic_string<char>(argv[1]);
+        std::cout << "Settings path: " << settings_path << std::endl;
+        //  TODO: parse input file
+        //        - simulation parameters
+        //        - initial conditions
+        // Settings settings = Settings::parse_from_file(settings_path);
+    } else {
+        std::cout << "Using default settings" << std::endl;
+        settings.c = 10.0;
+        settings.dx = 1.0;
+        settings.dt = 0.1;
+        settings.u = std::vector<float>(101, 0.0);
+        settings.u_prev = std::vector<float>(101, 0.0);
+        for (int i = 0; i < settings.u.size(); i++) {
+            settings.u[i] = sin(i * M_PI / 100.0) * 5;
+        }
+        for (int i = 0; i < settings.u_prev.size(); i++) {
+            settings.u_prev[i] = sin(i * M_PI / 100.0) * 5;
+        }
+    }
 
     // initialize simulation
     // TODO: pass simulation parameters and initial conditions
-    Simulation sim = Simulation();
+    Simulation sim = Simulation(settings);
 
-    std::cout << "Starting simulation, press Ctrl-C / Strg-C to exit" << std::endl;
+    std::cout << "Starting simulation, press Ctrl-C / Strg-C to exit"
+              << std::endl;
 
     // loop
     for (;;) {
