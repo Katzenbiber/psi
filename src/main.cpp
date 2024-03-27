@@ -26,13 +26,14 @@ int main(int argc, char **argv) {
     // BUG: forget to check if input file is provided
     Settings settings;
     if (argc >= 2) {
+        // TODO: basic string or string?
         std::basic_string<char> settings_path =
             std::basic_string<char>(argv[1]);
         std::cout << "Settings path: " << settings_path << std::endl;
         //  TODO: parse input file
         //        - simulation parameters
         //        - initial conditions
-        // Settings settings = Settings::parse_from_file(settings_path);
+        settings = Settings::parse_from_file(settings_path);
     } else {
         std::cout << "Using default settings" << std::endl;
         settings.c = 10.0;

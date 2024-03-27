@@ -4,6 +4,7 @@
 
 class Settings {
     std::string settings_path;
+    void add(std::string variable, std::string value);
 
   public:
     float c;
