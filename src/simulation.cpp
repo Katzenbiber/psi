@@ -22,6 +22,8 @@ Simulation::Simulation() {
 }
 
 void Simulation::visualize() {
+    // make cursor invisible
+    std::cout << "\033[?25l";
     // visualize
     for (int row = 5; row > -6; row--) {
         for (int i = 0; i < u.size(); i++) {
@@ -34,6 +36,7 @@ void Simulation::visualize() {
         std::cout << std::endl;
     }
     std::cout << "\033[11A";
+    // move cursor up by 11 lines
 }
 
 void Simulation::step(float dt) {
