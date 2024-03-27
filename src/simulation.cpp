@@ -23,7 +23,6 @@ Simulation::Simulation() {
 
 void Simulation::visualize() {
     // visualize
-    std::cout << "\n\n\n\n";
     for (int row = 5; row > -6; row--) {
         for (int i = 0; i < u.size(); i++) {
             if (u[i] >= row && u[i] < row + 1) {
@@ -34,6 +33,7 @@ void Simulation::visualize() {
         }
         std::cout << std::endl;
     }
+    std::cout << "\033[11A";
 }
 
 void Simulation::step(float dt) {
