@@ -7,7 +7,7 @@
 #include <thread>
 
 void exit_handler(int s) {
-    // move curser down 12 lines
+    // move cursor down 12 lines
     std::cout << "\033[12B" << std::endl;
     // make cursor visible again
     std::cout << "\033[?25h" << std::endl;
