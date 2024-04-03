@@ -4,7 +4,7 @@
 #include <sstream>
 
 Settings::Settings() {}
-Settings Settings::parse_from_file(std::basic_string<char> settings_path) {
+Settings Settings::parse_from_file(std::string settings_path) {
     Settings settings;
     std::ifstream settings_file(settings_path);
 
