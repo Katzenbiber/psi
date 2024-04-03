@@ -46,7 +46,6 @@ int main(int argc, char **argv) {
     }
 
     // initialize simulation
-    // TODO: pass simulation parameters and initial conditions
     Simulation sim = Simulation(settings);
 
     std::cout << "Starting simulation, press Ctrl-C / Strg-C to exit"

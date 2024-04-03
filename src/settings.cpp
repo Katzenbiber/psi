@@ -11,7 +11,7 @@ Settings Settings::parse_from_file(std::string settings_path) {
     std::string variable, equal, value;
     while ((settings_file >> variable >> equal >> value) && (equal == "=")) {
         if (value[0] == '[') {
-            // TODO: parse array
+            // parse array
             while (value.back() != ']') {
                 std::string next_value;
                 settings_file >> next_value;
