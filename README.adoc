@@ -1,0 +1,65 @@
+= 1D Wave equation Simulation
+:stem: asciimath
+
+This program simulates the 1D wave equation using the finite difference method.
+The wave equation is given by:
+
+[stem]
+++++
+(d^2u)/dt^2 = c^2 * (d^2u)/dx^2
+++++
+
+where u(x,t) is the displacement of the string at position x and time t, and c
+is the wave speed. It is solved using the finite difference method, where the
+displacement at the next time step is given by:
+
+[stem]
+++++
+u(x,t+dt) = 2*u(x,t) - u(x,t-dt) + c^2 * dt^2 * (d^2u)/dx^2
+++++
+
+and the second derivative is approximated by:
+
+[stem]
+++++
+(d^2u)/dx^2 = (u(x+dx,t) - 2*u(x,t) + u(x-dx,t)) / dx^2
+++++
+
+== Building the Program
+The program uses CMake as you know from the previous exercises. To build this
+project you can execute these commands:
+
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+== Usage
+The program is run from the command line with the following arguments:
+
+    ./wave_simulation <path_to_input_file>
+
+The input file should contain the following parameters:
+
+* c: wave speed
+* dx: spatial step size
+* dt: time step size
+* u: initial displacement of the string
+* u_prev: displacement of the string at the previous time step
+
+Those parameters are given in the TOML format. Look at the examples in the
+`+examples/+` folder.
+
+== Your Tasks
+// TODO: Add tasks
+
+== Hints
+* Your terminal should be as wide as the number of points in the string to
+  display properly.
+* You can use the provided examples in the examples folder to test the program.
+* The simulation by its very nature can be unstable. If you see the displacement
+  growing without bounds, try reducing the time step size.
+** The example simulations are stable with the given parameters.
+* The program should use a dirichlet boundary condition, i.e. the displacement
+  at the ends of the string should be zero.
+
