@@ -1,6 +1,5 @@
 #include "settings.h"
 #include "simulation.h"
-#include <cmath>
 #include <csignal>
 #include <iostream>
 #include <string>
