@@ -1,9 +1,26 @@
 #include "settings.h"
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 
-Settings::Settings() {}
+Settings Settings::default_settings() {
+    Settings settings;
+    settings.c = 10.0;
+    settings.dx = 1.0;
+    settings.dt = 0.1;
+    settings.u = std::vector<float>(101, 0.0);
+    // BUG: forget to initialize u_prev
+    settings.u_prev = std::vector<float>(101, 0.0);
+    for (int i = 0; i < settings.u.size(); i++) {
+        settings.u[i] = sin(i * M_PI / 100.0) * 5;
+    }
+    for (int i = 0; i < settings.u_prev.size(); i++) {
+        settings.u_prev[i] = sin(i * M_PI / 100.0) * 5;
+    }
+    return settings;
+}
+
 Settings Settings::parse_from_file(std::string settings_path) {
     Settings settings;
     std::ifstream settings_file(settings_path);

@@ -32,17 +32,7 @@ int main(int argc, char **argv) {
         settings = Settings::parse_from_file(settings_path);
     } else {
         std::cout << "Using default settings" << std::endl;
-        settings.c = 10.0;
-        settings.dx = 1.0;
-        settings.dt = 0.1;
-        settings.u = std::vector<float>(101, 0.0);
-        settings.u_prev = std::vector<float>(101, 0.0);
-        for (int i = 0; i < settings.u.size(); i++) {
-            settings.u[i] = sin(i * M_PI / 100.0) * 5;
-        }
-        for (int i = 0; i < settings.u_prev.size(); i++) {
-            settings.u_prev[i] = sin(i * M_PI / 100.0) * 5;
-        }
+        settings = Settings::default_settings();
     }
 
     // initialize simulation

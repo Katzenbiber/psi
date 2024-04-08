@@ -1,25 +1,6 @@
 #include "simulation.h"
-#include <cmath>
 #include <iostream>
 #include <vector>
-
-Simulation::Simulation() {
-    // initialize simulation
-    time = 0.0;
-    // BUG: forget to initialize u_prev
-    u_prev = std::vector<float>(101, 0.0);
-    u = std::vector<float>(101, 0.0);
-    dx = 1;
-    c = 10.0;
-
-    // initialize u with half a sine wave
-    for (int i = 0; i < u.size(); i++) {
-        u[i] = sin(i * M_PI / 100.0) * 5;
-    }
-    for (int i = 0; i < u.size(); i++) {
-        u_prev[i] = sin(i * M_PI / 100.0) * 5;
-    }
-}
 
 Simulation::Simulation(Settings settings) {
     // initialize simulation
