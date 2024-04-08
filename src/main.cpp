@@ -26,8 +26,7 @@ int main(int argc, char **argv) {
     // BUG: forget to check if input file is provided
     Settings settings;
     if (argc >= 2) {
-        std::string settings_path =
-            std::string(argv[1]);
+        std::string settings_path = std::string(argv[1]);
         std::cout << "Settings path: " << settings_path << std::endl;
         settings = Settings::parse_from_file(settings_path);
     } else {
@@ -47,7 +46,7 @@ int main(int argc, char **argv) {
         sim.visualize();
 
         // step forward in simulation
-        sim.step(0.1);
+        sim.step(settings.dt);
 
         // sleep
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
