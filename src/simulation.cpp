@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-Simulation::Simulation(Settings settings) {
+Simulation::Simulation(const Settings &settings) {
     // initialize simulation
     time = 0.0;
     dx = settings.dx;

@@ -12,7 +12,7 @@ class Simulation {
 
   public:
     Simulation();
-    Simulation(Settings settings);
+    Simulation(const Settings &settings);
     void visualize();
     void step(float dt);
 };

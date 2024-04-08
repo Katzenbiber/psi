@@ -35,6 +35,7 @@ int main(int argc, char **argv) {
     }
 
     // initialize simulation
+    // PERF: not using reference but constructing new object
     Simulation sim = Simulation(settings);
 
     std::cout << "Starting simulation, press Ctrl-C / Strg-C to exit"
