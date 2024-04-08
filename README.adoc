@@ -37,7 +37,7 @@ project you can execute these commands:
 == Usage
 The program is run from the command line with the following arguments:
 
-    ./wave_simulation <path_to_input_file>
+    ./wave-simulation <path_to_input_file>
 
 The input file should contain the following parameters:
 
