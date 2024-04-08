@@ -1,12 +1,12 @@
 = 1D Wave equation Simulation
-:stem: asciimath
+:stem: latexmath
 
 This program simulates the 1D wave equation using the finite difference method.
 The wave equation is given by:
 
 [stem]
 ++++
-(d^2u)/dt^2 = c^2 * (d^2u)/dx^2
+\frac{d^2u}{dt^2} = c^2 \frac{d^2u}{dx^2}
 ++++
 
 where u(x,t) is the displacement of the string at position x and time t, and c
@@ -15,14 +15,14 @@ displacement at the next time step is given by:
 
 [stem]
 ++++
-u(x,t+dt) = 2*u(x,t) - u(x,t-dt) + c^2 * dt^2 * (d^2u)/dx^2
+u(x,t+dt) = 2u(x,t) - u(x,t-dt) + c^2 \cdot dt^2 \cdot \frac{d^2u}{dx^2}
 ++++
 
 and the second derivative is approximated by:
 
 [stem]
 ++++
-(d^2u)/dx^2 = (u(x+dx,t) - 2*u(x,t) + u(x-dx,t)) / dx^2
+\frac{d^2u}{dx^2} = \frac{u(x+dx,t) - 2u(x,t) + u(x-dx,t)}{dx^2}
 ++++
 
 == Building the Program
@@ -62,4 +62,3 @@ Those parameters are given in the TOML format. Look at the examples in the
 ** The example simulations are stable with the given parameters.
 * The program should use a dirichlet boundary condition, i.e. the displacement
   at the ends of the string should be zero.
-
