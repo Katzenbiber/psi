@@ -39,11 +39,7 @@ void Simulation::step(float dt) {
     u_next.reserve(u.size());
 
     for (int i = 0; i < u.size(); i++) {
-        // BUG: forget to handle boundary conditions
-        float left = i == 0 ? 0 : u[i - 1];
-        float right = i == u.size() - 1 ? 0 : u[i + 1];
-
-        float u_xx = (left - 2 * u[i] + right) / (dx * dx);
+        float u_xx = (u[i - 1] - 2 * u[i] + u[i + 1]) / (dx * dx);
         float u_new = c * c * u_xx * dt * dt + 2 * u[i] - u_prev[i];
         u_next.push_back(u_new);
     }
