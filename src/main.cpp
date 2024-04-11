@@ -22,19 +22,11 @@ int main(int argc, char **argv) {
     sigIntHandler.sa_flags = 0;
     sigaction(SIGINT, &sigIntHandler, NULL);
 
-    // BUG: forget to check if input file is provided
-    Settings settings;
-    if (argc >= 2) {
-        std::string settings_path = std::string(argv[1]);
-        std::cout << "Settings path: " << settings_path << std::endl;
-        settings = Settings::parse_from_file(settings_path);
-    } else {
-        std::cout << "Using default settings" << std::endl;
-        settings = Settings::default_settings();
-    }
+    std::string settings_path = std::string(argv[1]);
+    std::cout << "Settings path: " << settings_path << std::endl;
+    Settings settings = Settings::parse_from_file(settings_path);
 
     // initialize simulation
-    // PERF: not using reference but constructing new object
     Simulation sim = Simulation(settings);
 
     std::cout << "Starting simulation, press Ctrl-C / Strg-C to exit"
