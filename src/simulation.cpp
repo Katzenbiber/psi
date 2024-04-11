@@ -17,8 +17,7 @@ void Simulation::visualize() {
     // https://en.wikipedia.org/wiki/ANSI_escape_code#CSI_(Control_Sequence_Introducer)_sequences
     std::cout << "\033[?25l";
     // visualize
-    // BUG: don't visualize all lines
-    for (int row = 5; row > -7; row--) {
+    for (int row = 5; row > -5; row--) {
         for (int i = 0; i < u.size(); i++) {
             if (u[i] >= row && u[i] < row + 1) {
                 std::cout << "*";
@@ -26,11 +25,10 @@ void Simulation::visualize() {
                 std::cout << " ";
             }
         }
-        // PERF: use '\n' instead of 'std::endl'
         std::cout << std::endl;
     }
-    // move cursor up by 11 lines
-    std::cout << "\033[12A";
+    // move cursor up by 10 lines
+    std::cout << "\033[10A";
 }
 
 void Simulation::step(float dt) {
