@@ -26,6 +26,7 @@ void Simulation::visualize() {
                 std::cout << " ";
             }
         }
+        // PERF: use '\n' instead of 'std::endl'
         std::cout << std::endl;
     }
     // move cursor up by 11 lines

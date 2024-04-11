@@ -14,5 +14,5 @@ class Settings {
     std::vector<float> u_prev;
     Settings() = default;
     static Settings default_settings();
-    static Settings parse_from_file(std::string settings_path);
+    static Settings parse_from_file(const std::string &settings_path);
 };

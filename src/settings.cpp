@@ -21,8 +21,9 @@ Settings Settings::default_settings() {
     return settings;
 }
 
-Settings Settings::parse_from_file(std::string settings_path) {
+Settings Settings::parse_from_file(const std::string &settings_path) {
     Settings settings;
+    settings.settings_path = settings_path;
     std::ifstream settings_file(settings_path);
 
     std::string variable, equal, value;
@@ -62,7 +63,7 @@ std::vector<float> parse_array(std::string array) {
     return vec;
 }
 
-void Settings::add(std::string variable, std::string value) {
+void Settings::add(const std::string variable, std::string value) {
     if (variable == "c") {
         c = std::stof(value);
     } else if (variable == "dx") {
